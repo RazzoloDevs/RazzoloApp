@@ -100,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
+            _reset();
             final var background = new Background(matrix, spinner.getSelectedItem().toString());
             background.run();
             handler.post(() -> {
-                wordAdapter.clear();
                 background.getFoundWords().forEach((k,v) -> {
                     wordAdapter.add(new Word(k, k.length(), v));
                 });
