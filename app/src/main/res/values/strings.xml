@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RazzoloApp</string>
+    <string-array name="algorithms_array">
+        <item>In ampiezza</item>
+        <item>In profondità</item>
+        <item>Approfondimento iterativo</item>
+        <item>In ampiezza con Trie</item>
+        <item>In profondità con Trie</item>
+    </string-array>
+</resources>
