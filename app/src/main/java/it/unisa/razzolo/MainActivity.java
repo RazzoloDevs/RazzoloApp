@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        spinner = (Spinner) findViewById(R.id.algorithms_spinner);
+        spinner = findViewById(R.id.algorithms_spinner);
 
         foundWordSize_text = findViewById(R.id.foundWordSize_text);
         elapsedTime_text = findViewById(R.id.elapsedTime_text);
@@ -122,7 +122,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cleanGrid(){
-        // "Pulire" la griglia
+        // "Pulire" la griglia dalle caselle evidenziate
+    }
+
+    public void onClickResetBtn(View view) {
+        _reset();
+    }
+
+    public void onClickRandomBtn(View view) {
+        _reset();
+        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        for(EditText e : boxes)
+            e.setText(String.valueOf(alphabet[(int)(Math.random()*26)]));
+    }
+
+    private void _reset(){
+        wordAdapter.clear();
+        foundWordSize_text.setText("");
+        elapsedTime_text.setText("");
+        cleanGrid();
+        for(EditText e : boxes)
+            e.setText("");
     }
 
     private final char[][] matrix = new char[4][4];

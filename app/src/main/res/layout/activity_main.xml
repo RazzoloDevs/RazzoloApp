@@ -8,6 +8,45 @@
     android:background="#005D9C"
     tools:context=".MainActivity">
 
+    <Button
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button_corners"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="195dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="false"/>
+    <Button
+        android:id="@+id/random_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/baseline_autorenew_24dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="195dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onClickRandomBtn" />
+    <Button
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button_corners"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="false"/>
+    <Button
+        android:id="@+id/reset_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/baseline_delete_24dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onClickResetBtn"/>
+
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="300dp"
@@ -310,9 +349,10 @@
         android:id="@+id/algorithms_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:entries="@array/algorithms_array"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        android:entries="@array/algorithms_array" />
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
     <ListView
         android:id="@+id/listView"
@@ -341,7 +381,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listView"
         android:layout_marginTop="10dp"
-        android:text="0"
+        android:text=""
         android:textSize="24sp"
         android:textColor="@android:color/holo_orange_dark"
         android:background="#2CFFFFFF"/>
@@ -363,13 +403,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foundWordSize_text"
         android:layout_marginTop="5dp"
-        android:text="0.0 s"
+        android:text=""
         android:textSize="24sp"
         android:textColor="@android:color/holo_orange_dark"
         android:background="#2CFFFFFF"/>
 
     <Button
-        android:id="@+id/buttonRun"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
