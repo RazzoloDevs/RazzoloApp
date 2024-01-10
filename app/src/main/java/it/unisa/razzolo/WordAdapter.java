@@ -38,12 +38,12 @@ public class WordAdapter extends ArrayAdapter<Word> {
         text.setTag(position);
         score.setTag(position);
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MainActivity.
-//            }
-//        });
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.getInstance().onWordClicked(w.coordinates());
+            }
+        });
 
         return view;
     }

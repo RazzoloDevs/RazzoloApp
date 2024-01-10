@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        instance = this;
+
         final var hashDictionary = HashDictionary.getInstance();
         final var trie = Trie.getInstance();
         BufferedReader reader = null;
@@ -112,17 +114,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onWordClicked(final ArrayList<Point> coordinates) {
-        cleanGrid();
-        highlightOnGrid(coordinates);
+        _cleanHighlightOnGrid();
+        for(final Point p : coordinates)
+            boxes[p.getI()*4+p.getJ()].setBackground(getDrawable(R.drawable.box_corners_orange));
     }
 
-    private void highlightOnGrid(final ArrayList<Point> coordinates) {
-        // Implementa la logica per evidenziare le caselle della parola sulla griglia
-
-    }
-
-    private void cleanGrid(){
-        // "Pulire" la griglia dalle caselle evidenziate
+    private void _cleanHighlightOnGrid(){
+        for(final EditText e : boxes)
+            e.setBackground(getDrawable(R.drawable.box_corners_white));
     }
 
     public void onClickResetBtn(View view) {
@@ -140,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         wordAdapter.clear();
         foundWordSize_text.setText("");
         elapsedTime_text.setText("");
-        cleanGrid();
+        _cleanHighlightOnGrid();
         for(EditText e : boxes)
             e.setText("");
     }
@@ -152,4 +151,10 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinner;
     private TextView foundWordSize_text;
     private TextView elapsedTime_text;
+
+    private static MainActivity instance;
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
 }
