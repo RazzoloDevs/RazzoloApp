@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.algorithms_spinner);
 
+        foundWordSize_text = findViewById(R.id.foundWordSize_text);
+        elapsedTime_text = findViewById(R.id.elapsedTime_text);
+
         listView = findViewById(R.id.listView);
         wordAdapter = new WordAdapter(this, R.layout.activity_listview, R.id.listView);
         listView.setAdapter(wordAdapter);
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("DefaultLocale")
     public void onClickRunBtn(View view) {
         int i=0,j=0;
         for(EditText e : boxes){
@@ -100,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
                 background.getFoundWords().forEach((k,v) -> {
                     wordAdapter.add(new Word(k, k.length(), v));
                 });
+                foundWordSize_text.setText(String.valueOf(background.getFoundWords().size()));
+                elapsedTime_text.setText(String.format("%g s", background.getElapsedTime()));
             });
         });
     }
@@ -123,4 +130,6 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private WordAdapter wordAdapter;
     private Spinner spinner;
+    private TextView foundWordSize_text;
+    private TextView elapsedTime_text;
 }

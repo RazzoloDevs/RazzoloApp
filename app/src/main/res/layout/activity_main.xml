@@ -306,51 +306,81 @@
             app:layout_row="3" />
     </androidx.gridlayout.widget.GridLayout>
 
-
     <Spinner
         android:id="@+id/algorithms_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:entries="@array/algorithms_array"/>
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        android:entries="@array/algorithms_array" />
 
     <ListView
         android:id="@+id/listView"
         android:background="#CCCC"
         android:layout_width="380dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="75dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/algorithms_spinner" />
 
-    <Button
-        android:id="@+id/buttonReset"
-        android:layout_width="150dp"
+    <TextView
+        android:id="@+id/foundWordSize_label"
+        android:layout_width="216dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/divider_horizontal_textfield"
+        android:text="Numero parole: "
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView" />
+    <TextView
+        android:id="@+id/foundWordSize_text"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_corners"
-        android:text="RESET"
-        android:onClick="onClickBtnReset"
-        android:textColor="#FDFDFD"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView"
+        android:layout_marginTop="10dp"
+        android:text="0"
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_orange_dark"
+        android:background="#2CFFFFFF"/>
+
+    <TextView
+        android:id="@+id/elapsedTime_label"
+        android:layout_width="216dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:drawable/divider_horizontal_textfield"
+        android:text="Tempo impiegato: "
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foundWordSize_label" />
+    <TextView
+        android:id="@+id/elapsedTime_text"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foundWordSize_text"
+        android:layout_marginTop="5dp"
+        android:text="0.0 s"
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_orange_dark"
+        android:background="#2CFFFFFF"/>
+
     <Button
         android:id="@+id/buttonRun"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="205dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="141dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_corners"
-        android:text="RUN"
         android:onClick="onClickRunBtn"
+        android:text="RUN"
         android:textColor="#FDFDFD"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
