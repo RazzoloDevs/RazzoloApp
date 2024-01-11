@@ -100,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
-            _reset();
             final var background = new Background(matrix, spinner.getSelectedItem().toString());
             background.run();
             handler.post(() -> {
+                _reset();
                 background.getFoundWords().forEach((k,v) -> {
                     wordAdapter.add(new Word(k, k.length(), v));
                 });
@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickResetBtn(View view) {
         _reset();
+        for(final EditText e : boxes)
+            e.setText("");
     }
 
     public void onClickRandomBtn(View view) {
@@ -140,8 +142,6 @@ public class MainActivity extends AppCompatActivity {
         foundWordSize_text.setText("");
         elapsedTime_text.setText("");
         _cleanHighlightOnGrid();
-        for(EditText e : boxes)
-            e.setText("");
     }
 
     private final char[][] matrix = new char[4][4];
