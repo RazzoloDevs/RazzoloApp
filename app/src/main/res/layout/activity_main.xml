@@ -345,24 +345,17 @@
             app:layout_row="3" />
     </androidx.gridlayout.widget.GridLayout>
 
-    <Spinner
-        android:id="@+id/algorithms_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/algorithms_array"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
     <ListView
         android:id="@+id/listView"
         android:background="#CCCC"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/black"
         android:layout_width="380dp"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/algorithms_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
     <TextView
         android:id="@+id/foundWordSize_label"

@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:gravity="center"
+        android:textSize="18sp"
         android:textColor="@color/black"/>
     <TextView
         android:id="@+id/score"
@@ -16,5 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:gravity="center"
+        android:textSize="18sp"
         android:textColor="@color/black"/>
 </LinearLayout>

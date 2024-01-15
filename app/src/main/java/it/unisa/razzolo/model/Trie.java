@@ -1,7 +1,14 @@
 package it.unisa.razzolo.model;
 
+import android.content.res.AssetManager;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Set;
+
+import it.unisa.razzolo.MainActivity;
 
 public class Trie
 {
@@ -29,6 +36,29 @@ public class Trie
 
     private Trie(){
         root = new TrieNode();
+
+        this._build();
+    }
+
+    private void _build(){
+        BufferedReader reader = null;
+        try {
+            AssetManager am = MainActivity.getContext().getAssets();
+            reader = new BufferedReader(new InputStreamReader(am.open("dictionary.txt")));
+            String line;
+            while ((line = reader.readLine()) != null)
+                this._insert(line);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     public static Trie getInstance(){
@@ -38,7 +68,7 @@ public class Trie
         return _instance;
     }
 
-    public void insert(String word)
+    private void _insert(String word)
     {
         var children = root.getChildren();
         var node = new TrieNode();
