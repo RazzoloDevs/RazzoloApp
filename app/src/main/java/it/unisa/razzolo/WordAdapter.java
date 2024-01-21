@@ -2,6 +2,7 @@ package it.unisa.razzolo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,15 +39,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         text.setTag(position);
         score.setTag(position);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity.getInstance().onWordClicked(w.coordinates());
-            }
-        });
-
         return view;
     }
-
 
 }

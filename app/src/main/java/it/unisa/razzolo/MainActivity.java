@@ -3,6 +3,7 @@ package it.unisa.razzolo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.os.Handler;
@@ -35,9 +36,15 @@ public class MainActivity extends AppCompatActivity {
         foundWordSize_text = findViewById(R.id.foundWordSize_text);
         elapsedTime_text = findViewById(R.id.elapsedTime_text);
 
-        listView = findViewById(R.id.listView);
+        final ListView listView = findViewById(R.id.listView);
         wordAdapter = new WordAdapter(this, R.layout.activity_listview, R.id.listView);
         listView.setAdapter(wordAdapter);
+        // Set on click listener for each item in the list
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            final Word w = wordAdapter.getItem(position);
+            assert w != null;
+            onWordClicked(w.coordinates());
+        });
 
         for (int i=1; i<=16; i++) {
             @SuppressLint("DiscouragedApi")
@@ -121,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
     private final char[][] matrix = new char[4][4];
     private final EditText[] boxes = new EditText[16];
-    private ListView listView;
     private WordAdapter wordAdapter;
     private TextView foundWordSize_text;
     private TextView elapsedTime_text;

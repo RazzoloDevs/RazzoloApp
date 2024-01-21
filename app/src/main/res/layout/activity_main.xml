@@ -349,7 +349,7 @@
         android:id="@+id/listView"
         android:background="#CCCC"
         android:choiceMode="singleChoice"
-        android:listSelector="@color/black"
+        android:listSelector="@android:color/darker_gray"
         android:layout_width="380dp"
         android:layout_height="350dp"
         android:layout_marginTop="16dp"
