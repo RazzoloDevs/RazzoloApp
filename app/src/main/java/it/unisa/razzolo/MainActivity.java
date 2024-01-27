@@ -3,13 +3,13 @@ package it.unisa.razzolo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        instance = this;
         context = getApplicationContext();
 
         final var trie = Trie.getInstance();    // Build Trie
@@ -36,21 +35,21 @@ public class MainActivity extends AppCompatActivity {
         foundWordSize_text = findViewById(R.id.foundWordSize_text);
         elapsedTime_text = findViewById(R.id.elapsedTime_text);
 
+        final GridLayout gridLayout = findViewById(R.id.gridLayout);
+        for(int i=0; i<16; i++){
+            final MyEditText e = new MyEditText(this);
+            boxes[i] = e;
+            gridLayout.addView(e);
+        }
+
         final ListView listView = findViewById(R.id.listView);
         wordAdapter = new WordAdapter(this, R.layout.activity_listview, R.id.listView);
         listView.setAdapter(wordAdapter);
-        // Set on click listener for each item in the list
         listView.setOnItemClickListener((parent, view, position, id) -> {
             final Word w = wordAdapter.getItem(position);
             assert w != null;
             onWordClicked(w.coordinates());
         });
-
-        for (int i=1; i<=16; i++) {
-            @SuppressLint("DiscouragedApi")
-            int viewId = getResources().getIdentifier("box" + i, "id", getPackageName());
-            boxes[i-1] = findViewById(viewId);
-        }
 
     }
 
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     public void onWordClicked(final ArrayList<Point> coordinates) {
         _cleanHighlightOnGrid();
         for(final Point p : coordinates)
-            boxes[p.getI()*4+p.getJ()].setBackground(getDrawable(R.drawable.box_corners_orange));
+            boxes[p.getI()*4 + p.getJ()].setBackground(getDrawable(R.drawable.box_corners_orange));
     }
 
     private void _cleanHighlightOnGrid(){
@@ -132,12 +131,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView foundWordSize_text;
     private TextView elapsedTime_text;
 
-    private static MainActivity instance;
     private static Context context;
-
-    public static MainActivity getInstance() {
-        return instance;
-    }
 
     public static Context getContext() {
         return context;
