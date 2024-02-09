@@ -1,4 +1,6 @@
 # RazzoloApp
+<img src="https://github.com/RazzoloDevs/RazzoloApp/blob/main/image.jpg" width=30% height=30%>
+
 ## Installazione
 - [Android Studio](https://developer.android.com/studio)
 1. Clonare la repository in locale: `git clone <repo url>`.
